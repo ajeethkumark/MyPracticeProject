@@ -31,6 +31,11 @@ public class childClassSerialization {
 class AnimalTest
 {
 	int i=10;
+	//if you add arugument constructor then you manual add no_argument constructor also otherwise it show InvalidCLassException
+	/*AnimalTest(int i)
+	{
+		System.out.println("Animal class constructor");
+	}*/
 	AnimalTest()
 	{
 		System.out.println("Animal class constructor");
@@ -41,6 +46,7 @@ class DogTest extends AnimalTest implements Serializable
 	int j=20;
 	DogTest()
 	{
+		//super(10);
 		System.out.println("Dog class constructor");
 	}
 }
