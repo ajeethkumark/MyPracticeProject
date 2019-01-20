@@ -1,4 +1,4 @@
-package SerializationTest;
+package SerializationTest.serializationinheritance;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
