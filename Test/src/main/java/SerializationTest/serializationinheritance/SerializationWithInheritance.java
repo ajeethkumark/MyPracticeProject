@@ -14,7 +14,7 @@ public class SerializationWithInheritance {
 		FileOutputStream fos=new FileOutputStream("inheritancefile.file");
 		ObjectOutputStream oos=new ObjectOutputStream(fos);
 		oos.writeObject(new Dog());
-		System.out.println("Serialization over");
+		
 		FileInputStream fis=new FileInputStream("inheritancefile.file");
 		ObjectInputStream ois=new ObjectInputStream(fis);
 		Dog d2=(Dog) ois.readObject();
