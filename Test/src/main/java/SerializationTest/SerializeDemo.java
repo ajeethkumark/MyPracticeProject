@@ -28,6 +28,7 @@ public class SerializeDemo {
 }
 class Test implements Serializable
 {
+	 private static final long serialVersionUID = 1L;
 	int i=10;
 	transient  int j=20;
 }

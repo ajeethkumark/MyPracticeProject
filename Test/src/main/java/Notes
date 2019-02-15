@@ -1,0 +1,10 @@
+sql log configuration:
+
+
+	SET GLOBAL LOG_OUTPUT = 'TABLE';
+	SET GLOBAL GENERAL_LOG = 1;
+
+	SET GLOBAL GENERAL_LOG = 0;
+	SET  GLOBAL LOG_OUTPUT = 'FILE';
+
+	TRUNCATE TABLE mysql.general_log;
