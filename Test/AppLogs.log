@@ -1,0 +1,6 @@
+12-Apr-2019 12:46:53 IST[main]  log4jTest.LoggerPractice main - This is trace message 
+12-Apr-2019 12:46:53 IST[main]  log4jTest.LoggerPractice main - This is debug message 
+12-Apr-2019 12:46:53 IST[main]  log4jTest.LoggerPractice main - This is info message 
+12-Apr-2019 12:46:53 IST[main]  log4jTest.LoggerPractice main - This is warn message 
+12-Apr-2019 12:46:53 IST[main]  log4jTest.LoggerPractice main - This is error message 
+12-Apr-2019 12:46:53 IST[main]  log4jTest.LoggerPractice main - This is fatal message 

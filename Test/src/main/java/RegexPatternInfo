@@ -1,0 +1,28 @@
+character class:
+[abc] - Either a or b or c
+[^abc] - Except a or b or c.
+[a-z] - Alaphabet lower case.
+[^a-z] - Except alaphabet lower case
+[a-zA-z]
+[0-9]
+[a-zA-Z0-9]
+[^a-zA-Z0-9]
+
+
+
+pre-Defined character class:
+
+\s - space character
+\S - Any character Except space.
+\d - Any Digit from [0-9]
+\D - Any character except digit
+\w - Any word character [alpha numeric character][a-zA-Z0-9]
+\W - [^a-zA-Z0-9]
+
+Quantifier:
+  we can use quantifier to specify Number of Occurrence  to Match
+  
+      a= Exactly one match
+      a+=Atleast one a
+      a*=Any number of a's including zero also.
+      a?=Atmost one a or zero
