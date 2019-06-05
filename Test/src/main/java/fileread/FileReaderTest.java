@@ -14,7 +14,8 @@ public class FileReaderTest {
 		{
 			System.out.println("hello world");
 			//home/ajeeth/hints
-			File f=new File("//home//ajeeth//hints//hello.txt");
+			//File f=new File("//home//ajeeth//hints//hello.txt");
+			File f=new File("//home//ajeeth//drl_file//hello.txt");
 			BufferedReader br=new BufferedReader(new FileReader(f));
 			String letter=br.readLine();
 			while(letter!=null)

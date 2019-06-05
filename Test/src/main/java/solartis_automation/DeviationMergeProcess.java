@@ -64,10 +64,7 @@ public class DeviationMergeProcess {
 			//System.out.println(directoryPathsplit[i]);
 			directoryPath=directoryPath+directoryPathsplit[i]+"//";
 		}
-		//System.out.println("dirctorypath got it!"+directoryPath);
-		//System.out.println("FileName:"+fileNamesplit[fileNamesplit.length-1]);
-		
-		directoryPath=directoryPath+this.coverageName;
+				directoryPath=directoryPath+this.coverageName;
 		System.out.println("Directory path:"+directoryPath);
 		
 		File file=new File(directoryPath);
@@ -76,12 +73,6 @@ public class DeviationMergeProcess {
 		fileFullpath=directoryPath+"//"+fileNamesplit[fileNamesplit.length-1];
 		this.mergeFilepath=fileFullpath;
 		System.out.println("path Test:"+mergeFilepath);
-	/*	fileFullpath=directoryPath+"//"+fileNamesplit[fileNamesplit.length-1]+".drl";
-		File file=new File(directoryPath);
-		if(!file.exists())
-			file.mkdir();
-		this.mergeFilepath=fileFullpath;
-		System.out.println("path:"+this.mergeFilepath);*/
 		
 		
 		
