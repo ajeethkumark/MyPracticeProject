@@ -16,7 +16,7 @@ public class RegexPatternDemo {
 			System.out.println(m.start()+"....."+m.group());
 		}
 		
-		splitTerst();
+		//splitTerst();
 		mobileNumberValidation();
 		
 
