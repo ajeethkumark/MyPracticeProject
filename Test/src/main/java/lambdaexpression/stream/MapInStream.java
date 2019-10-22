@@ -1,6 +1,8 @@
 package lambdaexpression.stream;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 public class MapInStream {
@@ -32,6 +34,23 @@ public class MapInStream {
         
         System.out.println("..............");
         userList.forEach(t->System.out.println("name:"+t.getName()+" Age:"+t.getAge()));
+        
+        
+        
+        Map<Integer, String> HOSTING = new HashMap<>();
+        HOSTING.put(1, "linode.com");
+        HOSTING.put(2, "heroku.com");
+        HOSTING.put(3, "digitalocean.com");
+        HOSTING.put(4, "aws.amazon.com");
+        
+        Map<Integer,String> mapTest=HOSTING.entrySet().stream().filter(x->x.getValue()!="linode.com").collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
+        
+        System.out.println("Map..........:"+mapTest);
+        
+     List<Integer> mapTest2=  mapTest.entrySet().stream().filter(x->x.getKey()==2).map(x->x.getKey()*3).collect(Collectors.toList());
+     System.out.println("List:"+mapTest2);
+        
+
         
 	}
 	 private static boolean isNotSam(String name) {
