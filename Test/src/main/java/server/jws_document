@@ -1,0 +1,117 @@
+appache-httdp:
+
+1.Download appache-httpd (2.4.41)
+
+	1.1  ./configure
+		Error faced:
+			apr installed
+			sudo apt-get install libpcre3-dev
+	1.2 make
+        1.3 sudo make install
+
+Note: apache2 directory is created in /urs/local
+
+
+2. Download mod_cluster
+	2.1 I have downloaded 1.3.1 version (but it old now)
+	2.2 Need to generate the .so file from mod_cluster and that modules need to add to apache2/modules/
+		2.2.1-->/mod_cluster1.3.1/native/   
+
+create .so file for mensioned modules: advertise,mod_cluster_slotmem,mod_manager,mod_proxy_cluster/
+
+
+3.Advertise:
+
+	3.1cd advertise
+	3.2 sudo apt-get install autoconf     --->(install if not installed)-->Need to run ./buildconf   file which give configure file
+	3.3  ./configure --with-apxs=/usr/local/apache2/bin/apxs
+        3.4  sudo make   ---> .so file will generate   (mod_advertise.so will create)
+        3.5 copy generated .so file to /usr/local/apache2/modules             -->(sudo cp -r *.so /usr/local/apache2/modules/)
+
+4.mod_cluster_slotmem
+
+        4.1 cd mod_cluster_slotmem
+	4.2 ./buildconf
+	4.3  ./configure --with-apxs=/usr/local/apache2/bin/apxs
+	4.4 sudo make
+	4.5 sudo cp -r *.so /usr/local/apache2/modules/
+
+5.mod_manager
+	5.1 cd mod_manager
+	5.2 ./buildconf
+	5.3  ./configure --with-apxs=/usr/local/apache2/bin/apxs
+	5.4 sudo make
+	5.5 sudo cp -r *.so /usr/local/apache2/modules/
+
+6.mod_proxy_cluster
+
+	6.1 cd mod_proxy_cluster
+	6.2 ./buildconf
+	6.3  ./configure --with-apxs=/usr/local/apache2/bin/apxs
+	6.4 sudo make
+	6.5 sudo cp -r *.so /usr/local/apache2/modules/
+
+
+7.Now we need to load the module which we copied(.so) to /module directory --->Distination: /usr/local/apach2/conf/httpd.conf
+
+
+ADD this to httpd.conf:
+
+
+LoadModule advertise_modules modules/mod_advertise.so
+LoadModule manager_module modules/mod_manager.so
+LoadModule proxy_cluster_module modules/mod_proxy_cluster.so
+LoadModule cluster_slotmem_module modules/mod_cluster_slotmem.so
+
+
+
+
+
+<IfModule manager_module>
+	Listen 127.0.0.1:10001
+	ManagerBalancerName ctbs-utility
+<VirtualHost 127.0.0.1:10001>
+	<Location />
+		Require all granted
+	</Location>
+	<Location /mod_cluster-manager>
+		SetHandler mod_cluster-manager
+		Require all granted
+	</Location>
+</VirtualHost>
+</IfModule>
+
+	Note: remove # in mod_proxy.os and mod_proxy_ajp.so
+
+
+
+8.start the httpd
+
+/usr/local/apache2/bin/
+	sudo ./apachectl
+		check the process like:  ps -ef|grep httpd
+
+
+Now check on browser:http://localhost:80    -->for httpd
+Now check for mod_cluster:  http://localhost:10001//mod_cluster-manager            -->port and name given in httpd.conf file
+
+
+
+
+
+
+
+
+
+	
+
+
+
+
+
+
+ 
+
+
+
+ 

@@ -1,0 +1,97 @@
+apachehttpd-modcluster  & jboss integration
+
+
+master:
+
+vim host-master.xml
+	search /<servers> tag ,  copy the socket-binding group (like full-ha) from your server
+
+open domain.xml
+
+	search tag socket-binding-group (like full-ha)  
+	paste this:
+		<outbound-socket-binding name="proxy1">
+			<remote-destination host="127.0.0.1" port="10001">
+		</outbound-socket-binding>
+
+	search /<mod-cluster-config
+	paste this:(Mostlt already this line is there extra add proxies="proxy1")
+		<mod-cluster-config advertise-socket="modcluster" connector="ajp" proxies="proxy1">
+
+I am going to add this line due to missing:
+
+<subsystem xmlns="urn:jboss:domain:modcluster:3.0">
+	<mod-cluster-config advertise-socket="modcluster" connector="ajp" proxies="proxy1">
+		<dynamic-load-provider>
+			<load-metric type="cpu">
+		</dynamic-load-provider>
+	</mod-cluster-config>
+</subsystem>
+
+
+
+slave:
+
+vim host-slave.xml
+	search /<servers> tag, copy server-group name(like other server-group)
+
+open domain.xml
+	search /<server-group  , copy the profile of your server-group
+
+
+and add this in respective socket-binding:
+
+	<outbound-socket-binding name="proxy1">
+			<remote-destination host="127.0.0.1" port="10001"/>
+		</outbound-socket-binding>
+
+
+
+
+
+
+
+
+
+
+
+.................................
+verfify:
+
+<subsystem xmlns="urn:jboss:domain:modcluster:4.0">
+                <proxy name="default" advertise-socket="modcluster" listener="ajp">
+                    <dynamic-load-provider>
+                        <load-metric type="cpu"/>
+                    </dynamic-load-provider>
+                </proxy>
+            </subsystem>
+
+
+
+
+
+
+
+
+
+Great facing error if we add extra <mod-cluster-config>  -->use above line instead adding extra (include proxies="proxy1")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,54 @@
+Domain Mode with cluster:
+
+1.Add user
+cd /bin ./add-user.bat
+
+userName:ajeethkumar
+password:ajeethkumar*1
+
+Generated key
+<secret value="YWplZXRoa3VtYXIqMQ==" />
+
+
+Need to add interface in host-master.xml
+
+<interface name="public">
+	<inet-address value="${jboss.bind.address:127.0.0.1}"/>
+</interface>
+<interface name="unsecure">
+<inet-address value="${jboss.bind.address:127.0.0.1}"/>
+</interface>
+
+
+Run using this cmd:  cd bin
+	./domain.sh  --host-config=host-master.xml
+
+
+
+---------------------------------------------------------------------------------
+jboss slave:
+
+secret key added in host-slave.xml
+
+run using this cmd:
+ ./domain.sh --host-config=host-slave.xml -Djboss.domain.master.address=127.0.0.1
+
+
+Error facing :java.net.BindException: Already in use 127.0.0.1:1990 so in change to 1991 in host-slave.xml
+
+
+
+
+
+
+  <outbound-socket-binding name="mc-prox1">
+
+            <remote-destination host="127.0.0.1" port="10001"/>
+
+        </outbound-socket-binding>
+
+
+
+
+
+
