@@ -26,3 +26,49 @@ Quantifier:
       a+=Atleast one a
       a*=Any number of a's including zero also.
       a?=Atmost one a or zero
+
+      
+      
+ -------------------------------------------------------------------------------------------------
+ 
+ "(?i) \\b ([a-z]+) \\b (?: \\s+ \\1 \\b )+"
+
+\b       match a word boundary
+[a-z]+   match a word with one or more characters;
+         the parentheses capture the word as a group    
+\b       match a word boundary
+(?:      indicates a non-capturing group (which starts here)
+\s+      match one or more white space characters
+\1       is a back reference to the first (captured) group;
+         so the word is repeated here
+\b       match a word boundary
+)+       indicates the end of the non-capturing group and
+         allows it to occur one or more times
+         
+-------------------------------------------------------------------------------------
+
+
+\n is used as an end-of-line terminator in Unix text files
+
+\r Was historically (pre-OS X) used as an end-of-line terminator in Mac text files
+
+\r\n (ie both) are used to terminate lines in Windows and DOS text files.
+
+------------------------------------------------------
+Diferent between Matcher.find() vs Matcher.matches()
+
+matches returns true if the whole string matches the given pattern. find tries to find a substring that matches the pattern.
+
+			 
+---------------------------------------------------------------
+Issue faced:
+
+while(m.find())
+		{
+			//System.out.println(m.group()+"  post Result:"+m.matches()); ---> don't use matcher() function inside the loop.Faced issuse and loop not terminated
+			System.out.println(m.group()+"  post Result:"+m.matches());
+			
+		}
+--------------------------------------------------------------------------------------
+
+

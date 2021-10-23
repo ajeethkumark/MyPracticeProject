@@ -26,7 +26,7 @@ public class RegexPatternDemo {
 		System.out.println("phone number match Test begin");
 		// TODO Auto-generated method stub
 		Pattern p=Pattern.compile("(91|0)?[7-9][0-9]{9}");
-		Matcher m=p.matcher("07339092543");
+		Matcher m=p.matcher("07339092544");
 		System.out.println("Match:"+m.matches());
 		System.out.println("phone number match Test over");
 		
