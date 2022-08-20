@@ -66,6 +66,8 @@ static int partition(int[] arr, int low, int high)
  // indicates the right position
  // of pivot found so far
  int i = (low - 1); 
+ 
+ System.out.println("is i would be -1:::::"+i);
 
  for(int j = low; j <= high - 1; j++)
  {

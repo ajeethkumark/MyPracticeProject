@@ -61,8 +61,29 @@
     <artifactId>activation</artifactId>
     <version>1.1.1</version>
 </dependency>
-    
+ 
+    <dependency>
+        <groupId>org.apache.httpcomponents</groupId>
+        <artifactId>httpclient</artifactId>
+        <version>4.5.3</version>
+    </dependency>
+    <dependency>
+        <groupId>io.github.resilience4j</groupId>
+        <artifactId>resilience4j-circuitbreaker</artifactId>
+        <version>1.1.0</version>
+    </dependency>
 
+    <dependency>
+        <groupId>io.github.resilience4j</groupId>
+        <artifactId>resilience4j-retry</artifactId>
+        <version>1.1.0</version>
+    </dependency>
+    
+    <dependency>
+    <groupId>javax.json</groupId>
+    <artifactId>javax.json-api</artifactId>
+    <version>1.1.4</version>
+</dependency>
     
     
   </dependencies>
@@ -70,8 +91,8 @@
   
   
   <properties>
-    <maven.compiler.source>1.6</maven.compiler.source>
-    <maven.compiler.target>1.6</maven.compiler.target>
+    <maven.compiler.source>1.9</maven.compiler.source>
+    <maven.compiler.target>1.9</maven.compiler.target>
   </properties>
   <build>
     <finalName>Test</finalName>

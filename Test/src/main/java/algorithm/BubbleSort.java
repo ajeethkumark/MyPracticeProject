@@ -29,6 +29,8 @@ public class BubbleSort {
                             arr[j] = temp;  
                             for(int p:arr)
                          	   System.out.print(p+"  ");
+                            
+                            System.out.println("    ");
                     }  
                //  System.out.println("\n*********************************j:"+j);
                      
